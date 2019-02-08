@@ -2,7 +2,7 @@ CREATE DATABASE ng_brastlewarks;
 
 use ng_brastlewarks;
 
-CREATE TABLE brastlewarks (
+CREATE TABLE gnome (
 	id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	name VARCHAR(255),
 	thumbnail VARCHAR(255),
