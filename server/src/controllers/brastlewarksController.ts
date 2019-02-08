@@ -8,6 +8,7 @@ class BrastlewarksController {
 	public async list(req: Request, res: Response): Promise<void> {
         const gnomes = await pool.query('SELECT * FROM gnome');
         res.json(gnomes);
+        console.log("Get all success full");
     }
 
 	public async getOne(req: Request, res: Response): Promise<any>{

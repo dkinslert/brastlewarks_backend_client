@@ -17,6 +17,7 @@ class BrastlewarksController {
         return __awaiter(this, void 0, void 0, function* () {
             const gnomes = yield database_1.default.query('SELECT * FROM gnome');
             res.json(gnomes);
+            console.log("Get all success full");
         });
     }
     getOne(req, res) {
