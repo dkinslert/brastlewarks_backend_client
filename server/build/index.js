@@ -23,7 +23,7 @@ class Server {
     }
     routes() {
         this.app.use('/', indexRoutes_1.default);
-        this.app.use('/api/brastlewarks', brastlewarksRoutes_1.default.route);
+        this.app.use('/api/brastlewarks', brastlewarksRoutes_1.default);
     }
     start() {
         this.app.listen(this.app.get('port'), () => {

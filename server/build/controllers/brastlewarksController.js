@@ -41,7 +41,7 @@ class BrastlewarksController {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
             const oldGnome = req.body;
-            yield database_1.default.query('UPDATE gnome set ? WHERE id = ?', [req.body]);
+            yield database_1.default.query('UPDATE gnome set ? WHERE id = ?', [req.body, id]);
             res.json({ message: "The Gnome was updated" });
         });
     }

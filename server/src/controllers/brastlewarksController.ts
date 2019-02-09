@@ -27,7 +27,7 @@ class BrastlewarksController {
 	public async update(req: Request, res: Response):Promise<void> {
 		const { id } = req.params;
 		const oldGnome = req.body;
-		await pool.query('UPDATE gnome set ? WHERE id = ?', [req.body]);
+		await pool.query('UPDATE gnome set ? WHERE id = ?', [req.body, id]);
 		res.json({ message: "The Gnome was updated"})
 	}
 	public async delete(req: Request, res:Response):Promise<void>{

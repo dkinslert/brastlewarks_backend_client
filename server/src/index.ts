@@ -24,7 +24,7 @@ class Server {
 
   routes(): void {
     this.app.use('/', indexRoutes);
-    this.app.use('/api/brastlewarks', brastlewarksRoutes.route);
+    this.app.use('/api/brastlewarks', brastlewarksRoutes);
   }
 
   start(): void{

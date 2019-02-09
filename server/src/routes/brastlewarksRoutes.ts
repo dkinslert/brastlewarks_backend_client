@@ -5,7 +5,7 @@ import brastlewarksController from '../controllers/brastlewarksController';
 
 class BrastlewarksRoutes { 
 
-	router: Router = Router();
+	public router: Router = Router();
 
 	constructor(){
 		this.config();
