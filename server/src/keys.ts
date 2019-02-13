@@ -3,7 +3,7 @@ export default {
     database: {
         host: 'localhost',
         user: 'root',
-        password: '',
+        password: 'D1d4b9d9*',
         database: 'ng_brastlewarks'
     }
 

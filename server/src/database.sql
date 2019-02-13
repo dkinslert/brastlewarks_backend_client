@@ -9,7 +9,7 @@ CREATE TABLE gnome (
 	pictures VARCHAR(255),
 	age INT(11),
 	weight DECIMAL,
-	heihgt DECIMAL,
+	height DECIMAL,
 	hair_color VARCHAR(255),
 	professions VARCHAR(255),
 	friends VARCHAR(255),
