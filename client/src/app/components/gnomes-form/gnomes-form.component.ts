@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Gnomes } from '../models/gnomes';
-import { GnomesService } from '../services/ganomes.service';
+import { Component, HostBinding, OnInit } from '@angular/core';
+import { Gnomes } from '../../models/gnomes';
+import { GnomesService } from '../../services/gnomes.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -10,10 +10,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class GnomesFormComponent implements OnInit {
 
-  constructor(private gnomesService: GnomesService) { }
+  constructor(private gnomesService: GnomesService, private router: Router, private activatedRoute: ActivatedRoute) { }
   @HostBinding('class') clases = 'row';
 
-  gnome: Gnome = {
+  gnome: Gnomes = {
     name: '',
     thumbnail: '',
     age:'',
@@ -21,17 +21,18 @@ export class GnomesFormComponent implements OnInit {
     height: '',
     hair_color: '',
     professions: '',
-    friends:''
+    friends:'',
     created_at: new Date()
 };
+
+edit: boolean = false;
   ngOnInit() {
-  	const params = this.ActivatedRoute.snapsho
+    const params = this.activatedRoute.snapshot.params;
   	 if (params.id) {
       this.gnomesService.getGnome(params.id)
         .subscribe(
           res => {
             console.log(res);
-            this.game = res;
             this.edit = true;
           },
           err => console.log(err)
@@ -43,7 +44,7 @@ export class GnomesFormComponent implements OnInit {
   saveNewGnome() {
     delete this.gnome.created_at;
     delete this.gnome.id;
-    this.gnomesService.saveGnome(this.game)
+    this.gnomesService.saveGnome(this.gnome)
       .subscribe(
         res => {
           console.log(res);
@@ -53,7 +54,7 @@ export class GnomesFormComponent implements OnInit {
       )
   }
 
-  updateGnome() {
+updateGnome() {
     delete this.gnome.created_at;
     this.gnomesService.updateGnome(this.gnome.id, this.gnome)
       .subscribe(

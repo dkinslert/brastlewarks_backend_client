@@ -7,13 +7,21 @@ import { GnomesFormComponent } from './components/gnomes-form/gnomes-form.compon
 const routes: Routes = [
 	{
 		path: '',
-		redirectTo: '/',
+		redirectTo: '/gnomes',
 		pathMatch: 'full'
-	},	
-	{
-		path: '/',
-		component:AppComponent 
-	}
+	  },
+	  {
+		path: 'gnomes',
+		component: GnomesListComponent
+	  },
+	  {
+		path: 'gnomes/add',
+		component: GnomesFormComponent
+	  },
+	  {
+		path: 'gnomes/edit/:id',
+		component: GnomesFormComponent
+	  }
 ];
 
 @NgModule({

@@ -5,18 +5,32 @@ import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
-});
+})
+
 export class GnomesService {
   
   API_URI =  'http://localhost:3000/api';
-  
-  constructor(private http: HttpClient) { }
 
+  gnome: Gnomes = {
+    name: '',
+    thumbnail: '',
+    age:'',
+    weight: '',
+    height: '',
+    hair_color: '',
+    professions: '',
+    friends:'',
+    created_at: new Date()
+};
+   
+  constructor(private http: HttpClient) { }
+  
   getGnomes() {
+  
     return this.http.get(`${this.API_URI}/gnomes`);
   }
 
-  getGnomes(id: string) {
+  getGnome(id: string) {
     return this.http.get(`${this.API_URI}/gnomes/${id}`);
   }
 
@@ -24,12 +38,12 @@ export class GnomesService {
     return this.http.delete(`${this.API_URI}/gnomes/${id}`);
   }
 
-  saveGnome(game: Game) {
+  saveGnome(gnome: Gnomes) {
     return this.http.post(`${this.API_URI}/gnomes`, gnome);
   }
 
-  updateGnome(id: string|number, updatedGame: Game): Observable<Gnome> {
-    return this.http.put(`${this.API_URI}/gnomes/${id}`, updatedGnome);
+ updateGnome(id: string|number, updatedGnome: Gnomes) { 
+   return this.http.put(`${this.API_URI}/gnomes/${id}`, updatedGnome);
   }
 
 }

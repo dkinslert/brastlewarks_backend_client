@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { GnomesServices } from '../services/GnomesServices';
+import { GnomesService } from '../../services/gnomes.service';
 
-import { Gnome } from '../models/gnomes';
+import { Gnomes } from '../../models/gnomes';
 
 @Component({
   selector: 'app-gnomes-list',
@@ -10,22 +10,41 @@ import { Gnome } from '../models/gnomes';
 })
 export class GnomesListComponent implements OnInit {
 
-
+  //noimage: any = '../../assets/noimage.png' ;
   gnomes: any = [];
 
-  constructor() { }
+  constructor(private gnomesServices: GnomesService) { }
 
 
 
   ngOnInit() {
-  	this.getGenomes();
+  	this.getGnomes();
   }
 
   getGnomes() {
+  this.gnomesServices.getGnomes()
+  .subscribe(
+    
+    res =>
+     {
+       //this.noimage = this.noimage
+        this.gnomes = res 
+    },
+     
+     err => console.error(err)
 
+     
+  )
   }
-  deleteGnomes(){
-  	
+  deleteGnomes(id: string){
+    this.gnomesServices.deleteGnomes(id)
+    .subscribe(
+      res => {
+        console.log(res);
+        this.getGnomes;
+      },
+      err => console.error(err)
+    )
   }
 
 }

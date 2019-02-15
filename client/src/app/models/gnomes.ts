@@ -1,5 +1,5 @@
 export interface Gnomes {
-id?: number,
+id?: number;
 name?:string;
 thumbnail?:string;
 age?:string;
@@ -8,4 +8,5 @@ height?:string;
 hair_color?:string;
 professions?:string;
 friends?:string;
+created_at: Date;
 };
